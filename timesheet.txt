@@ -1,0 +1,6 @@
+2021.01.11
+2h: research react typescript
+1h: understanding the API
+1h: design skeleton
+1h: design interfaces, and state
+1,5h: research and import axios, and call the API with test city
