@@ -1,12 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
+import './i18n'
+
+import React, { Suspense } from 'react';
+
 import App from './App';
+import ReactDOM from 'react-dom';
+import { ThemeProvider } from './components/ThemeProvider';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<div>Loading...</div>}>
+      <ThemeProvider>
+      <App />
+      </ThemeProvider>
+    </Suspense>
   </React.StrictMode>,
   document.getElementById('root')
 );

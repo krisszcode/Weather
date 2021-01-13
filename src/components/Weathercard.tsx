@@ -13,13 +13,16 @@ const css = require('./Weathercard.css')
 
 
 
-class WeatherCard extends Component {
+class Weathercard extends Component {
+
+  interval:any;
 
   state = {
     city: "",
     cityToDisplay: "",
     latitude:0,
     longitude: 0,
+    time:0,
     pictureToDisplay: "",
     posts: {temperature: 0,
       weather: "",
@@ -53,6 +56,7 @@ class WeatherCard extends Component {
   //     cityToDisplay: "Győr"
   //   }, this.getLocationDataByName)
   // }
+
 
 
   defaultPost: IPost = {temperature: 0, weather: "", feelsLike: 0 }
@@ -115,6 +119,8 @@ class WeatherCard extends Component {
     })
   }
 
+
+
     render() {
 
     return (
@@ -137,7 +143,7 @@ class WeatherCard extends Component {
             </div>
           </div> :
           <div className="d-flex justify-content-center">
-            <div className="spinner-border" role="status">
+            <div className="spinner-border text-light" role="status">
             </div>
             <p>Please enable location</p>
           </div>
@@ -148,4 +154,4 @@ class WeatherCard extends Component {
   }
 }
 
-export default WeatherCard
+export default Weathercard
