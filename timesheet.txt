@@ -4,3 +4,6 @@
 1h: design skeleton
 1h: design interfaces, and state
 1,5h: research and import axios, and call the API with test city
+2021.01.12.
+2h changing picture implementation
+2021.01.13.
