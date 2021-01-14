@@ -22,9 +22,10 @@ Used technologies for this project:
 * [Openweather] - Easy to use weather API
 
 ### Timetable
-2021.01.11.
+
 |Estimated hour|Description|
 |---|---|
+2021.01.11.
 |2|research react typescript|
 |1|understanding the API|
 |1|design skeleton|
