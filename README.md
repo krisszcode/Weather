@@ -31,18 +31,15 @@ Used technologies for this project:
 |1.5|research and import axios, and call the API with test city|
 2021.01.12.
 |Estimated hour|Description|
-|---|---|
 |2|changing picture implementation|
 2021.01.13.
 |Estimated hour|Description|
-|---|---|
 |2|research for location checker library and implementation|
 |1.5|get the current time, and make it for greetings, and for the dark mode later|
 |2|dark mode imlementation|
 |1|research for the translation in React|
 2021.01.14.
 |Estimated hour|Description|
-|---|---|
 |4|design the site|
 |1.5|implementing search field and translate texts |
 ### Dependencies
