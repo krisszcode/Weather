@@ -1,5 +1,46 @@
 {
     "Switch to":{
         "1":"Switch to"
+    },
+    "Good":{
+        "1": "Good"
+    },
+    "Morning":{
+        "1": "Morning"
+    },
+    "Afternoon":{
+        "1": "Afternoon"
+    },
+    "Evening":{
+        "1": "Evening"
+    },
+    "dark":{
+        "1": "dark"
+    },
+    "light":{
+        "1": "light"
+    },
+    "mode":{
+        "1": "mode"
+    },
+    "English":{
+        "1": "English"
+    },
+    "Hungarian":{
+        "1": "Hungarian"
+    },
+    "Search":{
+        "1": "Search"
+    },
+    "Feels Like":{
+        "1": "Feels Like"
+    },
+    "Weather":{
+        "1": "Weather"
+    },
+    "Sunrise":{
+        "1": "Sunrise"
     }
+
+
 }

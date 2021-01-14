@@ -1,21 +1,27 @@
 import React, { Component } from 'react'
+import { WithTranslation, withTranslation } from 'react-i18next';
 
 import axios from 'axios'
+import moment from 'moment';
 
 interface IPost {
   temperature: number;
   weather: string;
   feelsLike: number;
+  sunrise: string;
 }
 
 
 const css = require('./Weathercard.css')
 
 
+class Weathercard extends Component<WithTranslation> {
 
-class Weathercard extends Component {
+
 
   interval:any;
+
+
 
   state = {
     city: "",
@@ -27,6 +33,7 @@ class Weathercard extends Component {
     posts: {temperature: 0,
       weather: "",
       feelsLike: 0,
+      sunrise: ""
     }}
 
   componentDidMount() {
@@ -58,9 +65,6 @@ class Weathercard extends Component {
   // }
 
 
-
-  defaultPost: IPost = {temperature: 0, weather: "", feelsLike: 0 }
-
   onChangeText = (event: React.FormEvent<HTMLInputElement>) => {
     this.setState({
       city: event.currentTarget.value
@@ -68,7 +72,7 @@ class Weathercard extends Component {
     console.log(this.state.city)
   }
 
-  onSubmit = (event: React.SyntheticEvent) => {
+  onSearch = (event: React.SyntheticEvent) => {
     event.preventDefault()
     this.getLocationDataByName()
   }
@@ -80,16 +84,18 @@ class Weathercard extends Component {
       const newPost :IPost =
       {temperature: Number(response.data.main.temp),
         weather: String(response.data.weather[0].main),
-        feelsLike: Number(response.data.main.feels_like)}
+        feelsLike: Number(response.data.main.feels_like),
+        sunrise: String(response.data.sys.sunrise)}
         if(response.status === 200){
           this.setState({
             posts: newPost,
-            pictureToDisplay: `/weatherIMG/${response.data.weather[0].main}.jpg`,
+            pictureToDisplay: `/weatherIMG/${response.data.weather[0].main}.png`,
             cityToDisplay : response.data.name
           }
 
           ,()=>{
             console.log(this.state.posts)
+            console.log()
             console.log(this.state.pictureToDisplay)
           })
         }
@@ -103,16 +109,18 @@ class Weathercard extends Component {
         const newPost :IPost =
         {temperature: Number(response.data.main.temp),
           weather: String(response.data.weather[0].main),
-          feelsLike: Number(response.data.main.feels_like)}
+          feelsLike: Number(response.data.main.feels_like),
+          sunrise: String(response.data.sys.sunrise)}
           if(response.status === 200){
             this.setState({
               posts: newPost,
-              pictureToDisplay: `/weatherIMG/${response.data.weather[0].main}.jpg`,
+              pictureToDisplay: `/weatherIMG/${response.data.weather[0].main}.png`,
               cityToDisplay : this.state.city
             }
 
             ,()=>{
               console.log(this.state.posts)
+
               console.log(this.state.pictureToDisplay)
             })
           }
@@ -127,23 +135,36 @@ class Weathercard extends Component {
 
       <div>
         {this.state.cityToDisplay!== "" ?
-          <div className="card">
-          <div>
-            <img className="card-img-top" src={this.state.pictureToDisplay} alt={this.state.posts.weather}/>
-            <div className="card-body">
-              <form onSubmit={this.onSubmit}>
-                <h4 className="card-title">{this.state.cityToDisplay}</h4>
-                <p className="card-text">{this.state.posts.weather}</p>
-                <p className="card-text">{this.state.posts.temperature} ℃</p>
-                <p className="card-text">{this.state.posts.feelsLike} ℃</p>
-                <input type="text" onChange={this.onChangeText}></input>
-                <button>gomb</button>
-              </form>
+        <div>
+          <div className="row col-4 offset-4">
+            <input className="form-control input-sm" onChange={this.onChangeText} type="text"></input>
+            <button className="btn btn-secondary" onClick={this.onSearch}>{this.props.t('Search.1')}</button>
+          </div>
+        <div className="card"> <span className="icon"><img className="img-fluid" src={this.state.pictureToDisplay} alt={this.state.posts.weather} /></span>
+        <div className="title">
+            <p>{this.state.cityToDisplay}</p>
+        </div>
+        <div className="temp">{this.state.posts.temperature}<sup>&deg;</sup></div>
+            <div className="row">
+                <div className="col-4">
+                    <div className="header">{this.props.t('Feels Like.1')}</div>
+                    <div className="value">{this.state.posts.feelsLike}<sup>&deg;</sup></div>
+                </div>
+                <div className="col-4">
+                    <div className="header">{this.props.t('Weather.1')}</div>
+                    <div className="value">{this.state.posts.weather}</div>
+                </div>
+                <div className="col-4">
+                    <div className="header">{this.props.t('Sunrise.1')}</div>
+                    <div className="value">{moment.unix(Number(this.state.posts.sunrise)).format('LT')}</div>
+                </div>
             </div>
-            </div>
-          </div> :
+          </div>
+          </div>
+
+          :
           <div className="d-flex justify-content-center">
-            <div className="spinner-border text-light" role="status">
+            <div className="spinner-border text-dark" role="status">
             </div>
             <p>Please enable location</p>
           </div>
@@ -154,4 +175,4 @@ class Weathercard extends Component {
   }
 }
 
-export default Weathercard
+export default withTranslation()(Weathercard)

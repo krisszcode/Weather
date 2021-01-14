@@ -4,11 +4,9 @@ import {ThemeContext} from './ThemeProvider'
 import {useTranslation} from 'react-i18next'
 
 export const Header = () => {
-  const locale = 'en';
   const [today, setDate] = React.useState(new Date());
   const { theme, toggleTheme, toggleDarkTheme, toggleLightTheme } = useContext(ThemeContext);
   const {t, i18n} = useTranslation();
-
   const [isSwitched, setIsSwitched] = React.useState(false)
 
   useEffect(() => {
@@ -41,26 +39,29 @@ export const Header = () => {
   }
 
 
-const day = today.toLocaleDateString(locale, { weekday: 'long' });
-const date = `${day}, ${today.getDate()} ${today.toLocaleDateString(locale, { month: 'long' })}\n\n`;
-
 const hour = today.getHours();
-const wish = `Good ${(hour < 12 && 'Morning') || (hour < 18 && 'Afternoon') || 'Evening'}! `;
+const greeting = `${t(`Good.1`)} ${(hour < 12 && t('Morning.1')) || (hour < 18 && t('Afternoon.1')) || t('Evening.1')}! `;
 
-const time = today.toLocaleTimeString(locale, { hour: 'numeric', hour12: true, minute: 'numeric', second: 'numeric' });
 
 
   return (
     <div>
-      <h3>{wish}</h3>
-      <h3>{date}</h3>
-      <h3>{time}</h3>
-      <button onClick={()=>changeLanguage("en")}>EN</button>
-      <button onClick={()=>changeLanguage("hu")}>HU</button>
-      <button onClick={(event) =>handleSubmit(event)}>
-        {t('Switch to.1')} {theme === "light" ? "dark" : "light"} mode
+      <div className="row">
+      <h3>{greeting}</h3>
+      </div>
+      <div className="row offset-5">
+        <div className="col-2">
+          <button className="btn btn-secondary" onClick={()=>changeLanguage("en")}>{t('English.1')}</button>
+        </div>
+        <div className="col-2">
+          <button className="btn btn-secondary" onClick={()=>changeLanguage("hu")}>{t('Hungarian.1')}</button>
+        </div>
+      </div>
+
+      <button className="btn btn-secondary" onClick={(event) =>handleSubmit(event)}>
+        {t('Switch to.1')} {theme === ("light") ? t("dark.1") : t("light.1")} {t("mode.1")}
       </button>
-    </div>
+      </div>
   )
 }
 

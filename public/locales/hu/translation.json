@@ -1,5 +1,45 @@
 {
     "Switch to":{
         "1":"Váltás"
+    },
+    "Good":{
+        "1": "Jó"
+    },
+    "Morning":{
+        "1": "Reggelt"
+    },
+    "Afternoon":{
+        "1": "napot"
+    },
+    "Evening":{
+        "1": "estét"
+    },
+    "dark":{
+        "1": "sötét"
+    },
+    "light":{
+        "1": "világos"
+    },
+    "mode":{
+        "1": "módra"
+    },
+    "English":{
+        "1": "angol"
+    },
+    "Hungarian":{
+        "1": "magyar"
+    },
+    "Search":{
+        "1": "Keres"
+    },
+    "Feels Like":{
+        "1": "Hőérzet"
+    },
+    "Weather":{
+        "1": "Időjárás"
+    },
+    "Sunrise":{
+        "1": "Napkelte"
     }
+
 }
