@@ -19,7 +19,6 @@ Used technologies for this project:
 * [Github] - version control.
 * [React] - A JavaScript library for building user interfaces
 * [Openweather] - Easy to use weather API
-* [Openweather] - Easy to use weather API
 
 ### Timetable
 
