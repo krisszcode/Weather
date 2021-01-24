@@ -1,5 +1,6 @@
 # Weather
 
+This is a weather app created with React and Typescript!
 
 ### Installation!
 
